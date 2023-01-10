@@ -169,6 +169,10 @@ owl:topObjectProperty rdfs:domain :asset ;
           rdfs:subClassOf :organization .
 
 
+###  http://www.toronto.ca/twonto#function
+:function rdf:type owl:Class .
+
+
 ###  http://www.toronto.ca/twonto#hydrant
 :hydrant rdf:type owl:Class ;
          rdfs:subClassOf :discreteAsset ;
@@ -225,6 +229,24 @@ owl:topObjectProperty rdfs:domain :asset ;
 ###  http://www.toronto.ca/twonto#sewerServiceConnection
 :sewerServiceConnection rdf:type owl:Class ;
                         rdfs:subClassOf :localizedSystem .
+
+
+###  http://www.toronto.ca/twonto#storage
+:storage rdf:type owl:Class ;
+         rdfs:subClassOf :function ;
+         rdfs:comment "a function that is realized when the input flow does not balance with the output flow" .
+
+
+###  http://www.toronto.ca/twonto#supplyBuffer
+:supplyBuffer rdf:type owl:Class ;
+              rdfs:subClassOf :storage ;
+              rdfs:comment "a function realized when the input flow is lower than the output flow, for the purpose of maintanin a certain property of the supply" .
+
+
+###  http://www.toronto.ca/twonto#surgeSuppression
+:surgeSuppression rdf:type owl:Class ;
+                  rdfs:subClassOf :storage ;
+                  rdfs:comment "a \"filter\" or \"cushion\" of a undesirable surge of a certain quality (e.g. pressure or flow) in the supply" .
 
 
 ###  http://www.toronto.ca/twonto#system
