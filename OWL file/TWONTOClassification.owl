@@ -138,6 +138,11 @@ owl:topObjectProperty rdfs:domain :asset ;
                             rdfs:subClassOf :asset .
 
 
+###  http://www.toronto.ca/twonto#containment
+:containment rdf:type owl:Class ;
+             rdfs:subClassOf :function .
+
+
 ###  http://www.toronto.ca/twonto#corporation
 :corporation rdf:type owl:Class ;
              rdfs:subClassOf :organization .
@@ -205,6 +210,12 @@ owl:topObjectProperty rdfs:domain :asset ;
              rdfs:subClassOf :discreteAsset .
 
 
+###  http://www.toronto.ca/twonto#processing
+:processing rdf:type owl:Class ;
+            rdfs:subClassOf :function ;
+            rdfs:isDefinedBy "a function that is realized when a physical or chemical property of the thing being processed is changed by the bearer of the function." .
+
+
 ###  http://www.toronto.ca/twonto#role
 :role rdf:type owl:Class ;
       rdfs:label "role"@en .
@@ -231,22 +242,23 @@ owl:topObjectProperty rdfs:domain :asset ;
                         rdfs:subClassOf :localizedSystem .
 
 
-###  http://www.toronto.ca/twonto#storage
-:storage rdf:type owl:Class ;
-         rdfs:subClassOf :function ;
-         rdfs:comment "a function that is realized when the input flow does not balance with the output flow" .
+###  http://www.toronto.ca/twonto#store
+:store rdf:type owl:Class ;
+       rdfs:subClassOf :function ;
+       rdfs:comment "store function implies the existance of containment function." ;
+       rdfs:isDefinedBy "a function that is realized when the input flow in to the bearer of the function is greater than the output flow and the difference between the input and the output is held within the bearer." .
 
 
-###  http://www.toronto.ca/twonto#supplyBuffer
-:supplyBuffer rdf:type owl:Class ;
-              rdfs:subClassOf :storage ;
-              rdfs:comment "a function realized when the input flow is lower than the output flow, for the purpose of maintanin a certain property of the supply" .
+###  http://www.toronto.ca/twonto#supply
+:supply rdf:type owl:Class ;
+        rdfs:subClassOf :function ;
+        rdfs:comment "a function that is realized when the input flow of a substance or energy in to the bearer of the function is greater than the output flow." .
 
 
 ###  http://www.toronto.ca/twonto#surgeSuppression
 :surgeSuppression rdf:type owl:Class ;
-                  rdfs:subClassOf :storage ;
-                  rdfs:comment "a \"filter\" or \"cushion\" of a undesirable surge of a certain quality (e.g. pressure or flow) in the supply" .
+                  rdfs:subClassOf :store ;
+                  rdfs:isDefinedBy "a momentary storage function realized to achieve relative stability in one or more qualities of the output (i.e. flow or pressure) dispite a large and sudden increase of input." .
 
 
 ###  http://www.toronto.ca/twonto#system
